@@ -2,11 +2,17 @@ import React from "react";
 import Comment from "./Comment";
 import "./CommentContainer.css";
 
-const CommentContainer = ({ comment }) => {
+const CommentContainer = ({ comment, addComment }) => {
   const { id, content, replies } = comment;
   return (
     <div className="comment-container">
-      <Comment key={id} id={id} content={content} replies={replies} />
+      <Comment
+        key={id}
+        id={id}
+        content={content}
+        replies={replies}
+        addComment={addComment}
+      />
     </div>
   );
 };

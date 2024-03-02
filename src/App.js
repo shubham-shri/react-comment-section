@@ -1,52 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import CommentContainer from "./components/CommentContainer";
+import * as utils from "./utils";
+import CommentInput from "./components/CommentInput";
+
 function App() {
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      content: "First content",
-      replies: [
-        {
-          id: 2,
-          content: "first content's first reply",
-          replies: [
-            {
-              id: 3,
-              content: "first content's first reply's reply",
-              replies: [],
-            },
-          ],
-        },
-        {
-          id: 4,
-          content: "first content's second reply",
-          replies: [],
-        },
-      ],
-    },
-    {
-      id: 5,
-      content: "Second content",
-      replies: [
-        {
-          id: 6,
-          content: "Second content's first reply",
-          replies: [],
-        },
-      ],
-    },
-    {
-      id: 7,
-      content: "Third content",
-      replies: [],
-    },
-  ]);
+  const [comments, setComments] = useState([]);
+  useEffect(() => {
+    setComments(utils.getCommentFromLocalStorage() || []);
+  }, []);
+  const addComment = (parentId, content) => {
+    console.log("content", content);
+    const commentObj = utils.getCommentObjFromContent(content);
+    const updatedCommentsArr = utils.addCommentInCommentsArray(
+      comments,
+      parentId,
+      commentObj
+    );
+    setComments([...updatedCommentsArr]);
+    utils.setCommentsToLocalStorage(updatedCommentsArr);
+  };
   return (
     <div className="App">
+      <CommentInput id={-1} addComment={addComment} />
       {comments.map((comment) => {
         const { id } = comment;
-        return <CommentContainer key={id} comment={comment} />;
+        return (
+          <CommentContainer
+            key={id}
+            comment={comment}
+            addComment={addComment}
+          />
+        );
       })}
     </div>
   );
