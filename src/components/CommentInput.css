@@ -1,0 +1,31 @@
+.comment-form {
+  display: flex;
+  position: relative;
+  width: fit-content;
+  align-items: center;
+}
+.comment-input {
+  padding: 8px 32px 8px 8px;
+  width: 240px;
+  border-color: black;
+  outline: none;
+  border-radius: 40px;
+}
+
+.comment-input__container {
+  padding: 0px 4px;
+}
+
+.comment-input__icon {
+}
+
+.comment-input__btn {
+  background: none;
+  border: none;
+  height: fit-content;
+  padding: 0;
+  position: absolute;
+  right: 8px;
+  display: flex;
+  align-items: center;
+}

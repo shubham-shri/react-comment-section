@@ -1,0 +1,7 @@
+.comment-container {
+  padding: 8px;
+  background-color: gainsboro;
+  border-radius: 8px;
+  width: fit-content;
+  margin-bottom: 8px;
+}
