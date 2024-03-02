@@ -18,6 +18,7 @@
 
 .comment-input__icon {
   text-rendering: optimizeLegibility;
+  color: black;
 }
 
 .comment-input__btn {
