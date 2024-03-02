@@ -17,6 +17,7 @@
 }
 
 .comment-input__icon {
+  text-rendering: optimizeLegibility;
 }
 
 .comment-input__btn {
